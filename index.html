@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html id="html-root" lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>OCI Foundations - Simulador Oficial</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="layout-container">
+        
+        <div id="view-intro" class="fade-in">
+            <div class="page-card">
+                <header class="card-header">
+                    <span class="badge">Oracle Cloud Infrastructure</span>
+                    <h1 class="card-title">Foundations Associate</h1>
+                    <p id="subtitle" class="card-subtitle">Simulador de Exame 1Z0-1085-25</p>
+                </header>
+                
+                <div class="card-body">
+                    <div class="layout-stack layout-stack--lg">
+                        <p class="section-title" data-i18n="select-language">Selecione o idioma / Select language:</p>
+                        <div class="btn-group">
+                            <button type="button" onclick="selectLanguage('pt')" id="btn-lang-pt" class="btn btn--primary">
+                                Português
+                            </button>
+                            <button type="button" onclick="selectLanguage('en')" id="btn-lang-en" class="btn btn--secondary">
+                                English
+                            </button>
+                        </div>
+                    </div>
+
+                    <h2 class="section-title" data-i18n="instructions-title">
+                        <span>📝</span> <span id="instructions-title-text">Instruções do Simulador</span>
+                    </h2>
+                    
+                    <ul class="instruction-list">
+                        <li>
+                            <span class="instruction-num">01</span>
+                            <p data-i18n="instruction-1">As perguntas baseiam-se em edições anteriores do exame <strong>OCI Foundations Associate (1Z0-1085-25)</strong>.</p>
+                        </li>
+                        <li>
+                            <span class="instruction-num">02</span>
+                            <p data-i18n="instruction-2">Reserve <strong>60 minutos</strong> sem interrupções para completar a prova.</p>
+                        </li>
+                        <li>
+                            <span class="instruction-num">03</span>
+                            <p data-i18n="instruction-3">Procure um <strong>ambiente tranquilo, sem interrupções</strong> e certifique-se de ter uma boa ligação à Internet.</p>
+                        </li>
+                        <li>
+                            <span class="instruction-num">04</span>
+                            <p data-i18n="instruction-4">Realize a simulação <strong>mais de uma vez</strong> para ganhar confiança e familiarizar-se com a prova.</p>
+                        </li>
+                    </ul>
+
+                    <div class="note-box">
+                        <p data-i18n="note">Nota: A ordem das perguntas e das opções mudará em cada tentativa.</p>
+                    </div>
+
+                    <button type="button" onclick="startQuiz()" id="btn-start" class="btn btn--primary" data-i18n="start-button">
+                        COMEÇAR TESTE
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-quiz" class="hide fade-in">
+            <div class="page-card quiz-card">
+                <div class="quiz-question-block">
+                    <div class="quiz-topbar">
+                        <div class="quiz-progress-wrap">
+                            <span id="progress-text" class="quiz-progress-label">Pergunta 1 de 40</span>
+                            <div class="quiz-progress-bar">
+                                <div id="progress-fill" class="quiz-progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div id="quiz-timer" class="quiz-timer">
+                            60:00
+                        </div>
+                    </div>
+
+                    <div id="question-map" class="quiz-question-map"></div>
+
+                    <h2 id="question-text" class="quiz-question-title">Carregando pergunta...</h2>
+                    <div id="options-container" class="quiz-options"></div>
+                </div>
+
+                <footer class="quiz-actions">
+                    <button type="button" id="btn-next" onclick="nextQuestion()" class="btn btn--dark btn--block" disabled>
+                        PRÓXIMO
+                    </button>
+                </footer>
+            </div>
+        </div>
+
+        <div id="view-results" class="hide fade-in">
+            <div class="page-card results-card">
+                <div id="res-icon" class="results-icon">🏆</div>
+                <h2 id="res-title" class="results-title">RESULTADOS</h2>
+                
+                <div class="results-stats">
+                    <div class="results-stat">
+                        <p class="results-stat-label" data-i18n="score">Pontuação</p>
+                        <p id="res-percent" class="results-stat-value results-stat-value--percent">0%</p>
+                    </div>
+                    <div class="results-stat">
+                        <p class="results-stat-label" data-i18n="correct">Corretas</p>
+                        <p id="res-count" class="results-stat-value results-stat-value--count">0/40</p>
+                    </div>
+                </div>
+
+                <button type="button" onclick="location.reload()" id="btn-new-attempt" class="btn btn--dark">
+                    NOVA TENTATIVA
+                </button>
+
+                <div class="results-review">
+                    <h3 class="results-review-title" data-i18n="review-title">Revisão de Perguntas</h3>
+                    <div id="review-list" class="review-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
