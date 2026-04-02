@@ -1799,7 +1799,7 @@ function nextQuestion() {
 
     if (currentQuestionIndex < questions.length - 1) {
     currentQuestionIndex++;
-    loadQuestion();
+    showQuestion();
   } else {
 
     // ===== TRACKING GOOGLE ANALYTICS =====
