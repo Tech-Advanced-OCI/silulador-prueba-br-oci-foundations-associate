@@ -1817,6 +1817,17 @@ function showResults() {
     const percent = total > 0 ? Math.round((correctCount / total) * 100) : 0;
     const passed = percent >= PASSING_PERCENT;
 
+    // ===== TRACKING GOOGLE ANALYTICS =====
+    if (typeof gtag === 'function') {
+        gtag('event', 'finish_quiz', {
+            event_category: 'quiz',
+            score: correctCount,
+            total_questions: total,
+            percentage: percent,
+            passed: passed
+        });
+    }
+
     // Detener temporizador se ainda estiver ativo
     if (timerId) {
         clearInterval(timerId);
