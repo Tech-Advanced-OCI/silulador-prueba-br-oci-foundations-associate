@@ -1641,6 +1641,11 @@ function startQuiz() {
 
     startTimer();
     showQuestion();
+
+    gtag('event', 'start_quiz', {
+    event_category: 'quiz',
+    event_label: 'OCI Foundations'
+});
 }
 
 function updateTimerDisplay() {
@@ -1793,12 +1798,24 @@ function nextQuestion() {
     if (userAnswers[currentQuestionIndex] == null) return;
 
     if (currentQuestionIndex < questions.length - 1) {
-        currentQuestionIndex += 1;
-        showQuestion();
-        return;
+    currentQuestionIndex++;
+    loadQuestion();
+  } else {
+
+    // ===== TRACKING GOOGLE ANALYTICS =====
+    const percentage = Math.round((score / questions.length) * 100);
+
+    if (typeof gtag === 'function') {
+        gtag('event', 'finish_quiz', {
+            event_category: 'quiz',
+            score: score,
+            total_questions: questions.length,
+            percentage: percentage
+        });
     }
 
     showResults();
+}
 }
 
 function showResults() {
