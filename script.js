@@ -1644,7 +1644,8 @@ function startQuiz() {
 
     gtag('event', 'start_quiz', {
     event_category: 'quiz',
-    event_label: 'OCI Foundations'
+    event_label: 'OCI Foundations',
+    'language': currentLanguage
 });
 }
 
