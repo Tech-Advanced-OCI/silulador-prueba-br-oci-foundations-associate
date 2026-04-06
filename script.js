@@ -1892,6 +1892,8 @@ function showResults() {
         item.appendChild(optionsWrap);
         reviewList.appendChild(item);
     }
+
+    console.log("finish_quiz enviado", correctCount, percent);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
